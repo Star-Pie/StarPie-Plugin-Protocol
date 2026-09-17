@@ -8,11 +8,11 @@
 - 发布者：
 - 新插件 / 版本更新：
 
-## SPP 信息
+## SDK 与 SPP 信息
 
-- SPP 版本：
+- SDK API 版本：
 - 最低 StarPie 版本：
-- 调用路径：动作执行 / 交互事件 / 轮盘结构
+- 注册表路径分类：动作执行 / 交互事件 / 轮盘结构（当前为审核与展示元数据）
 - 请求的宿主能力：
 
 ## Release Asset
@@ -24,7 +24,7 @@
 
 ## 检查
 
-- [ ] 包内包含合法 `plugin.json`
+- [ ] 包内包含当前宿主可识别的 `plugin.json`（使用 `apiVersion`、`assembly`、`platform`、`contributions`）
 - [ ] 包内入口 DLL 与清单一致
 - [ ] 没有包含 `StarPie.dll`
 - [ ] 没有包含 `StarPie.Plugin.Abstractions.dll`

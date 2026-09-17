@@ -36,6 +36,8 @@
 - 三条路径特有的规则只写入对应路径文档。
 - 不根据示例随意修改公共 ID、配置和生命周期语义。
 - 协议与当前实现冲突时必须明确记录，不能静默创造迁移格式。
+- 稳定行为写入 SPP 正文；当前官方宿主完成度和内部类映射写入 `docs/reference-implementation.md`。
+- 协议仓库不得复制主仓库完整内部架构；`PluginInstance`、`PluginCallCoordinator`、锁名和字段名不构成公共契约。
+- manifest 示例必须区分“当前宿主已支持字段”和“计划字段”；修改示例前应对照主仓库 `PluginManifest.cs` 与 `samples/HelloAction/plugin.json`。
+- `paths` 当前是计划字段，在 SDK、Scanner、ManifestReader 和运行时校验全部接入前，不得描述为当前必填或已支持字段。
 - SPP 1.x 内公共规则只增不改；不兼容变化留给新的主版本。
-
-

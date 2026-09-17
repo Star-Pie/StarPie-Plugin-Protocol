@@ -50,7 +50,7 @@ registry/
   ],
   "versions": {
     "1.0.0": {
-      "sppVersion": "1.0",
+      "apiVersion": "1.0",
       "minimumStarPieVersion": "1.8.0",
       "asset": {
         "fileName": "com.example.hello-1.0.0.sppkg",
@@ -63,6 +63,8 @@ registry/
 ```
 
 下载地址必须指向固定版本的 Release Asset，不能使用仓库级的 `latest` 地址。
+
+注册表中的 `paths` 是市场分类和审核元数据，可以提前描述插件计划实现的 SPP 路径；它不表示当前插件包的 `plugin.json` 已经支持同名字段。当前插件包兼容版本使用 `apiVersion`，字段规则见 [插件包与配置](plugin-package-and-configuration.md)。
 
 ## 3. 插件包
 
