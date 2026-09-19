@@ -162,4 +162,4 @@ StarPie 当前官方宿主已经实现：
 - 热重载、覆盖安装和卸载等待完全停止；
 - 端到端租约与 ALC 回收自检。
 
-这些类名和同步方式属于官方参考实现，不是 SPP 对其他宿主的内部结构要求。详情见 [官方参考实现状态](reference-implementation.md)。
+这些类名和同步方式属于官方参考实现，不是 SPP 对其他宿主的内部结构要求。详情见 [官方参考实现状态](../implementation/reference-implementation.md)。

@@ -155,5 +155,5 @@ SPP 1.0 的交互事件路径只允许观察。以下能力不属于这条路径
 
 ## 8. 官方实现参考
 
-- [官方参考实现状态](reference-implementation.md)
+- [官方参考实现状态](../implementation/reference-implementation.md)
 - [StarPie 插件系统架构与动作执行路径](https://github.com/SoftBlack42/StarPie/blob/main/docs/plugin-system-architecture.md)

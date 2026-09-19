@@ -177,5 +177,5 @@ ParameterField 声明式约束
 
 本文件规定动作路径必须满足的行为。StarPie 当前如何通过 `PluginRuntime`、`PluginInstance`、活动调用租约和 `PluginInvoker` 实现这些行为，请参阅：
 
-- [官方参考实现状态](reference-implementation.md)
+- [官方参考实现状态](../implementation/reference-implementation.md)
 - [StarPie 插件系统架构与动作执行路径](https://github.com/SoftBlack42/StarPie/blob/main/docs/plugin-system-architecture.md)

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pluginId": "io.github.example-dev.hello",
+  "version": "1.0.0",
+  "channel": "stable",
+  "publishedAt": "2026-09-18T00:00:00Z",
+  "source": {
+    "repository": "https://github.com/example-dev/starpie-hello",
+    "tag": "v1.0.0",
+    "commit": "0123456789abcdef0123456789abcdef01234567"
+  },
+  "compatibility": {
+    "apiVersion": "1.4",
+    "minimumHostVersion": "1.8.0-beta.1",
+    "maximumHostVersion": null,
+    "targetFramework": "net8.0-windows",
+    "platform": "win-x64"
+  },
+  "asset": {
+    "fileName": "io.github.example-dev.hello-1.0.0.spkg",
+    "downloadUrl": "https://github.com/example-dev/starpie-hello/releases/download/v1.0.0/io.github.example-dev.hello-1.0.0.spkg",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "size": 12345
+  },
+  "capabilities": [],
+  "status": "active",
+  "reason": null,
+  "replacedBy": null,
+  "advisory": null
+}

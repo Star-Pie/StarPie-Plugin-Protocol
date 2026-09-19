@@ -1,0 +1,55 @@
+name: Validate community registry
+
+on:
+  pull_request:
+    paths:
+      - "registry/**"
+      - "schemas/**"
+      - "templates/**"
+      - "tools/**"
+      - "docs/getting-started/**"
+      - "registry/README.md"
+      - ".github/workflows/validate-registry.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "registry/**"
+      - "schemas/**"
+      - "templates/**"
+      - "tools/**"
+      - ".github/workflows/validate-registry.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate registry and changed packages
+        shell: pwsh
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REVISION: ${{ github.event.pull_request.base.sha }}
+          PR_ACTOR: ${{ github.event.pull_request.user.login }}
+          PR_ACTOR_ID: ${{ github.event.pull_request.user.id }}
+        run: |
+          $parameters = @{}
+          if ($env:EVENT_NAME -eq 'pull_request') {
+            $parameters.BaseRevision = $env:BASE_REVISION
+            $parameters.PullRequestActor = $env:PR_ACTOR
+            $parameters.PullRequestActorId = [long]$env:PR_ACTOR_ID
+            $parameters.VerifyPackages = $true
+          }
+          ./tools/Test-CommunityRegistry.ps1 @parameters
+
+      - name: Check generated catalog
+        shell: pwsh
+        run: ./tools/Update-CommunityCatalog.ps1 -Check

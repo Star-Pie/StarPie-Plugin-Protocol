@@ -1,0 +1,43 @@
+name: Publish community catalog artifact
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "registry/**"
+      - "schemas/**"
+      - "tools/**"
+      - ".github/workflows/publish-community-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate registry
+        shell: pwsh
+        run: ./tools/Test-CommunityRegistry.ps1
+
+      - name: Verify generated catalog
+        shell: pwsh
+        run: ./tools/Update-CommunityCatalog.ps1 -Check
+
+      - name: Upload catalog artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: community-catalog-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            registry/index.json
+            registry/generated/community-catalog.json
+            schemas/community-catalog.schema.json
+            schemas/registry-index.schema.json

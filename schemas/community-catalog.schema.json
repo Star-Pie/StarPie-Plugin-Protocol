@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://starpie.org/schemas/community/community-catalog.schema.json",
+  "title": "StarPie Community Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "catalogType",
+    "sourceDigest",
+    "publishers",
+    "plugins"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "catalogType": {
+      "const": "community"
+    },
+    "sourceDigest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "publishers": {
+      "type": "array"
+    },
+    "plugins": {
+      "type": "array"
+    }
+  }
+}

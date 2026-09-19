@@ -1,14 +1,13 @@
 # 工作流目录
 
-此目录预留给插件注册表校验工作流。
+社区注册表 MVP 包含两个工作流：
 
-初期尚未实现自动校验，不创建无效的空 YAML。后续工作流至少应检查：
+- `validate-registry.yml`：在 PR 中校验发布者身份、插件所有权、注册结构、版本不可变性、生成文件和发生变化的 `.spkg`；
+- `publish-community-catalog.yml`：在 main 更新后验证并上传社区 catalog 构建产物。
 
-- `registry/index.json` 和插件注册文件格式；
-- 插件 ID 唯一性；
-- 版本号和固定 Release Asset 地址；
-- Asset 是否可以下载；
-- SHA-256 是否匹配；
-- 包内 `plugin.json` 与注册信息是否一致；
-- 禁止携带的程序集；
-- SPP 版本和调用路径是否合法。
+安全约束：
+
+- Fork PR 不获得发布或签名 Secret；
+- PR 校验不会加载或执行插件 DLL；
+- 带权限的发布步骤只在合并后的 main 上运行；
+- 当前 MVP catalog 构建产物尚未签名，正式默认启用在线安装前必须补充签名与客户端验证。

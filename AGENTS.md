@@ -1,6 +1,6 @@
 # SPP 文档与插件开发规则
 
-本文件供参与 StarPie 插件开发的 AI 和开发者使用。开始工作前必须阅读 `README.md`、`docs/SPP-1.0.md`，并阅读目标路径对应的文档。
+本文件供参与 StarPie 插件开发的 AI 和开发者使用。开始工作前必须阅读 `README.md`、`docs/protocol/SPP-1.0.md`，并阅读目标路径对应的文档。
 
 ## 必须遵守
 
@@ -23,21 +23,31 @@
 
 ## 三条路径
 
-- 动作注册和调用遵守 `docs/action-execution-path.md`。
-- 交互事件订阅遵守 `docs/interaction-event-path.md`。
-- 动态轮盘结构遵守 `docs/wheel-structure-path.md`。
+- 动作注册和调用遵守 `docs/paths/action-execution.md`。
+- 交互事件订阅遵守 `docs/paths/interaction-events.md`。
+- 动态轮盘结构遵守 `docs/paths/wheel-structure.md`。
 
 一个插件可以实现多条路径，但每项贡献必须单独注册。清单中的路径声明必须覆盖运行时注册的全部贡献。
 
 ## 修改协议文档时
 
 - 优先写开发者必须遵守的行为，不展开宿主内部类设计。
-- 不重复同一规则；通用规则放入 `SPP-1.0.md` 或 `runtime-and-lifecycle.md`。
+- 不重复同一规则；通用规则放入 `docs/protocol/SPP-1.0.md` 或 `docs/protocol/runtime-and-lifecycle.md`。
 - 三条路径特有的规则只写入对应路径文档。
 - 不根据示例随意修改公共 ID、配置和生命周期语义。
 - 协议与当前实现冲突时必须明确记录，不能静默创造迁移格式。
-- 稳定行为写入 SPP 正文；当前官方宿主完成度和内部类映射写入 `docs/reference-implementation.md`。
+- 稳定行为写入 SPP 正文；当前官方宿主完成度和内部类映射写入 `docs/implementation/reference-implementation.md`。
 - 协议仓库不得复制主仓库完整内部架构；`PluginInstance`、`PluginCallCoordinator`、锁名和字段名不构成公共契约。
 - manifest 示例必须区分“当前宿主已支持字段”和“计划字段”；修改示例前应对照主仓库 `PluginManifest.cs` 与 `samples/HelloAction/plugin.json`。
 - `paths` 当前是计划字段，在 SDK、Scanner、ManifestReader 和运行时校验全部接入前，不得描述为当前必填或已支持字段。
 - SPP 1.x 内公共规则只增不改；不兼容变化留给新的主版本。
+
+## 修改社区注册表时
+
+- MVP 只接受 GitHub 个人用户和 `io.github.<login>` 命名空间。
+- 第三方 `.spkg` 必须托管在发布者自己的固定版本 GitHub Release，不上传到本仓库。
+- 发布者、插件和版本源文件必须符合 `schemas/`，并通过 `tools/Test-CommunityRegistry.ps1`。
+- 修改源文件后必须运行 `tools/Update-CommunityCatalog.ps1`，不得手工拼接 catalog。
+- 已发布版本的包地址、哈希、源码 Commit、兼容范围和能力不可修改；撤回只修改状态元数据。
+- 校验第三方包时只做静态检查，禁止加载或执行插件 DLL。
+- 不得在 Fork PR 工作流中使用发布或签名 Secret。

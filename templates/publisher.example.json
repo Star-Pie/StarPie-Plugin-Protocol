@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "publisherId": "github:12345678",
+  "displayName": "Example Developer",
+  "identity": {
+    "provider": "github",
+    "login": "example-dev",
+    "userId": 12345678,
+    "profileUrl": "https://github.com/example-dev"
+  },
+  "namespaces": [
+    "io.github.example-dev"
+  ],
+  "maintainers": [
+    {
+      "provider": "github",
+      "login": "example-dev",
+      "userId": 12345678,
+      "role": "owner"
+    }
+  ],
+  "securityContact": {
+    "type": "github-security-advisory",
+    "url": "https://github.com/example-dev/starpie-example/security/advisories"
+  },
+  "terms": {
+    "version": "2026-09-18",
+    "acceptedAt": "2026-09-18T00:00:00Z"
+  },
+  "status": "active"
+}

@@ -1,17 +1,21 @@
-# 插件注册信息
+# 插件登记目录
 
-此目录保存每个插件的注册信息，一个插件对应一个 JSON 文件：
-
-```text
-<pluginId>.json
-```
-
-例如：
+每个插件使用独立目录：
 
 ```text
-com.example.hello.json
+<pluginId>/
+├─ plugin.json
+└─ versions/
+   └─ <version>.json
 ```
 
-注册信息用于描述插件版本、兼容性、调用路径、Release Asset 下载地址和 SHA-256。实际 `.sppkg` 插件包不提交到此目录，而是上传到本仓库的 GitHub Releases。
+- 第一次提交：[提交第一个社区插件](../../docs/getting-started/first-plugin-submission.md)
+- 发布新版本：[发布插件新版本](../../docs/getting-started/release-new-version.md)
+- 完整注册表规则：[registry/README.md](../README.md)
 
-新增注册文件后，还必须在上一级 `index.json` 中加入对应插件条目。
+插件包托管在发布者自己的固定 GitHub Release，不提交到本目录。修改登记信息后运行：
+
+```powershell
+pwsh ./tools/Test-CommunityRegistry.ps1 -VerifyPackages
+pwsh ./tools/Update-CommunityCatalog.ps1
+```

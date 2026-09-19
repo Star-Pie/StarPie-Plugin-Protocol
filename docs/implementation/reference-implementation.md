@@ -110,11 +110,11 @@ tags
 sha256
 ```
 
-`paths` 是协议计划字段，当前尚未成为官方宿主正式加载条件。详见 [插件包与配置](plugin-package-and-configuration.md)。
+`paths` 是协议计划字段，当前尚未成为官方宿主正式加载条件。详见 [插件包与配置](../development/plugin-package-and-configuration.md)。
 
 ## 6. 参考资料
 
 - [StarPie 主仓库](https://github.com/SoftBlack42/StarPie)
 - [插件系统架构与动作执行路径](https://github.com/SoftBlack42/StarPie/blob/main/docs/plugin-system-architecture.md)
-- [动作执行路径](action-execution-path.md)
-- [运行时与生命周期](runtime-and-lifecycle.md)
+- [动作执行路径](../paths/action-execution.md)
+- [运行时与生命周期](../protocol/runtime-and-lifecycle.md)

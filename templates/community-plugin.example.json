@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.example-dev.hello",
+  "publisherId": "github:12345678",
+  "name": "Hello Plugin",
+  "description": "提供示例问候动作。",
+  "repository": "https://github.com/example-dev/starpie-hello",
+  "homepage": "https://github.com/example-dev/starpie-hello",
+  "license": "MIT",
+  "categories": [
+    "productivity"
+  ],
+  "paths": [
+    "action-execution"
+  ],
+  "declaredCapabilities": [],
+  "channels": {
+    "stable": "1.0.0",
+    "beta": null
+  },
+  "status": "active",
+  "replacedBy": null,
+  "createdAt": "2026-09-18T00:00:00Z"
+}

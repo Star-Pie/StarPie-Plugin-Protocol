@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://starpie.org/schemas/community/publisher.schema.json",
+  "title": "StarPie Community Publisher",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "publisherId",
+    "displayName",
+    "identity",
+    "namespaces",
+    "maintainers",
+    "securityContact",
+    "terms",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "publisherId": {
+      "type": "string",
+      "pattern": "^github:[1-9][0-9]*$"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "login",
+        "userId",
+        "profileUrl"
+      ],
+      "properties": {
+        "provider": {
+          "const": "github"
+        },
+        "login": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$"
+        },
+        "userId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "profileUrl": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[A-Za-z0-9-]+/?$"
+        }
+      }
+    },
+    "namespaces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^io\\.github\\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+      }
+    },
+    "maintainers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "login",
+          "userId",
+          "role"
+        ],
+        "properties": {
+          "provider": {
+            "const": "github"
+          },
+          "login": {
+            "type": "string",
+            "minLength": 1
+          },
+          "userId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "role": {
+            "enum": [
+              "owner",
+              "maintainer"
+            ]
+          }
+        }
+      }
+    },
+    "securityContact": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "url"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "github-security-advisory",
+            "web"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "terms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "acceptedAt"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "acceptedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "active",
+        "suspended",
+        "revoked"
+      ]
+    }
+  }
+}
